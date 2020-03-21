@@ -3,4 +3,9 @@
     <color name="colorPrimary">#03A9F4</color>
     <color name="colorPrimaryDark">#0287c3</color>
     <color name="colorAccent">#FF80AB</color>
+    <color name="colorBackground">#EBEFF0</color>
+    <color name="colorClickedStar">#FDCA29</color>
+    <color name="colorBackgroundStar">#F5F5F5</color>
+    <color name="colorText">#959595</color>
+
 </resources>
