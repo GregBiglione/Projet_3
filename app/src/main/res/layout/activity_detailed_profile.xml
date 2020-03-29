@@ -13,7 +13,7 @@
     <ImageView
         android:id="@+id/item_list_avatar"
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
+        android:layout_height="150dp"/>
 
     <TextView
         android:id="@+id/avatar_name"
@@ -21,8 +21,9 @@
         android:layout_height="wrap_content"
         app:layout_anchor="@+id/star_button"
         app:layout_anchorGravity="top"
-        android:layout_gravity="top"
-        android:textSize="36sp"
+        android:layout_gravity="center"
+        android:textSize="32sp"
+        android:textColor="#fff"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"/>
 
@@ -82,7 +83,8 @@
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:paddingBottom="5dp"
-                    android:textSize="30sp" />
+                    android:textSize="28sp"
+                    android:textColor="#000"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -106,9 +108,10 @@
                         app:srcCompat="@drawable/ic_place_pink_24dp" />
 
                     <TextView
+                        android:id="@+id/address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"/>
+                        android:textSize="14sp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -128,9 +131,10 @@
                         app:srcCompat="@drawable/ic_phone_pink_24dp" />
 
                     <TextView
+                        android:id="@+id/phoneNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -150,9 +154,10 @@
                         app:srcCompat="@drawable/ic_facebook_pink_24dp" />
 
                     <TextView
+                        android:id="@+id/facebook"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -185,10 +190,14 @@
 
 
                 <TextView
+                    android:id="@+id/about_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="30sp"/>
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="28sp"
+                    android:textColor="#000"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -196,10 +205,14 @@
                     android:background="@color/colorBackground"/>
 
                 <TextView
+                    android:id="@+id/about_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
                     android:layout_marginBottom="15dp"
-                    android:textSize="18sp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 

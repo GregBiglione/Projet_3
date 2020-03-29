@@ -61,9 +61,7 @@ public class Neighbour {
         return avatarUrl;
     }
 
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
-    }
+    public void setAvatarUrl(String avatarUrl) { this.avatarUrl = avatarUrl; }
 
     public String getAddress() {
         return address;
@@ -77,17 +75,13 @@ public class Neighbour {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
     public String getAboutMe() {
         return aboutMe;
     }
 
-    public void setAboutMe(String aboutMe) {
-        this.aboutMe = aboutMe;
-    }
+    public void setAboutMe(String aboutMe) { this.aboutMe = aboutMe; }
 
     @Override
     public boolean equals(Object o) {
@@ -102,3 +96,11 @@ public class Neighbour {
         return Objects.hash(id);
     }
 }
+
+// /** Facebook */ lg24
+//    //private String facebook;
+//String facebook, lg38
+//this.facebook = facebook; lg44
+//public String getFacebook() { return  facebook; } lg84
+//
+//    public void setFacebook(String facebook) { this.facebook = facebook + name; }
