@@ -16,6 +16,7 @@ public class DetailedProfile extends AppCompatActivity
 {
     //référencement et déclaration du back button
     private FloatingActionButton mBackButton;
+    private FloatingActionButton mStarButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -67,6 +68,18 @@ public class DetailedProfile extends AppCompatActivity
                 startActivity(backHomePage);
             }
         });
+
+        //branchement du favorite button
+        mStarButton = findViewById(R.id.star_button);
+
+        //Création de l'évènement au clic
+        mStarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mStarButton.setImageResource(R.drawable.ic_star_white_24dp);
+            }
+        });
+
 
     }
 }

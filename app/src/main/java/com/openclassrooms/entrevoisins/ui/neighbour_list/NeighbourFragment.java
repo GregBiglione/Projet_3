@@ -96,7 +96,7 @@ public class NeighbourFragment extends Fragment {
     @Subscribe
     public void onDetailedNeighbour(DetailedNeighbourEvent event) {
         Intent i = new Intent(getContext(),DetailedProfile.class);
-        //i.putExtra("avatar", event.neighbour.getAvatarUrl());
+        //i.putExtra("avatar", event.neighbour.getAvatarUrl()); putExtra ne fonctionne pas trouver autre méthode car image ≠ texte
         i.putExtra("avatar", event.neighbour.getAvatarUrl());
         i.putExtra("avatarName", event.neighbour.getName());
         i.putExtra("neighbourName", event.neighbour.getName());
