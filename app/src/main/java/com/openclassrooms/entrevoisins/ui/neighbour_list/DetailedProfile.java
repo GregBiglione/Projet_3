@@ -26,15 +26,16 @@ public class DetailedProfile extends AppCompatActivity
 
         //avatar
         ImageView avatar = findViewById(R.id.item_list_avatar);
-
+        //avatar.setImageResource(getIntent());
 
         //avatar neighbour name
         TextView avatarName = findViewById(R.id.avatar_name);
         avatarName.setText(getIntent().getStringExtra("avatarName"));
 
         //neighbour name
-        TextView firstname = findViewById(R.id.firstname);
-        firstname.setText(getIntent().getStringExtra("neighbourName"));
+        TextView firstName = findViewById(R.id.firstname);
+        String name = getIntent().getStringExtra("neighbourName");
+        firstName.setText(name);
 
         //neighbour address
         TextView address = findViewById(R.id.address);
@@ -45,8 +46,8 @@ public class DetailedProfile extends AppCompatActivity
         phoneNumber.setText(getIntent().getStringExtra("phoneNumber"));
 
         //neighbour facebook
-        //TextView facebook = findViewById(R.id.facebook);
-        //facebook.setText(getIntent().getStringExtra("facebook"));
+        TextView facebook = findViewById(R.id.facebook);
+        facebook.setText(getIntent().getStringExtra("facebook") + name);
 
         //about me title
         TextView about_title = findViewById(R.id.about_title);
@@ -77,6 +78,7 @@ public class DetailedProfile extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 mStarButton.setImageResource(R.drawable.ic_star_white_24dp);
+                //ajouter le neighbour dans favorites neighbours
             }
         });
 
