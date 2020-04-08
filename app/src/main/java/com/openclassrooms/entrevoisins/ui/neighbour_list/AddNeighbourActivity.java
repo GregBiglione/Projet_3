@@ -78,7 +78,6 @@ public class AddNeighbourActivity extends AppCompatActivity {
                 addButton.setEnabled(s.length() > 0);
             }
         });
-
     }
 
     @OnClick(R.id.create)
@@ -90,7 +89,8 @@ public class AddNeighbourActivity extends AppCompatActivity {
                 addressInput.getEditText().getText().toString(),
                 phoneInput.getEditText().getText().toString(),
                 facebookInput.getEditText().getText().toString(),
-                aboutMeInput.getEditText().getText().toString()
+                aboutMeInput.getEditText().getText().toString(),
+                false
         );
         mApiService.createNeighbour(neighbour);
         finish();

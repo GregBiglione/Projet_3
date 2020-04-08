@@ -4,11 +4,16 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.service.DummyNeighbourGenerator;
+import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -18,6 +23,8 @@ public class DetailedProfile extends AppCompatActivity
     private FloatingActionButton mBackButton;
     private FloatingActionButton mStarButton;
 
+    private static final String TAG = "DetailedProfile";
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -26,7 +33,10 @@ public class DetailedProfile extends AppCompatActivity
 
         //avatar
         ImageView avatar = findViewById(R.id.item_list_avatar);
-        //avatar.setImageResource(getIntent());
+        String avatarImage = getIntent().getStringExtra("avatar");
+        Glide.with(this)
+                .load(avatarImage)
+                .into(avatar);
 
         //avatar neighbour name
         TextView avatarName = findViewById(R.id.avatar_name);
@@ -57,9 +67,21 @@ public class DetailedProfile extends AppCompatActivity
         TextView about_text = findViewById(R.id.about_text);
         about_text.setText(getIntent().getStringExtra("aboutText"));
 
+        //isFavorite
+        //Boolean isFavorite = Boolean.valueOf(getIntent().getStringExtra("favorite"));
+        //Boolean isFavorite = getIntent().getExtras().getBoolean("favorite");
+        //Boolean isFavorite = getIntent().getExtras().getBoolean("favorite");
+        Boolean isFavorite = getIntent().getBooleanExtra("favorite", false);
 
+        Log.d(TAG, "Valeur de isFavorite = " + isFavorite);
         //branchement du back button
         mBackButton = findViewById(R.id.back_arrow_button);
+
+        //test pour voir si l'étoile est jaune à true
+        if (isFavorite)
+        {
+            mStarButton.setImageResource(R.drawable.ic_star_white_24dp);
+        }
 
         //Création de l'évènement au clic
         mBackButton.setOnClickListener(new View.OnClickListener() {
@@ -76,9 +98,17 @@ public class DetailedProfile extends AppCompatActivity
         //Création de l'évènement au clic
         mStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                mStarButton.setImageResource(R.drawable.ic_star_white_24dp);
-                //ajouter le neighbour dans favorites neighbours
+            public void onClick(View view)
+            {
+                //ajouter les favoris si booleen est false et passer le booleen à true
+                if (!isFavorite)
+                {
+                    mStarButton.setImageResource(R.drawable.ic_star_white_24dp);
+                    //DummyNeighbourGenerator.DUMMY_NEIGHBOURS(isFavorite);
+
+                }
+
+                //si nouveau clic passer l'étoile en blanc, retirer le neighbour des favoris et repasser le booleen à false
             }
         });
 

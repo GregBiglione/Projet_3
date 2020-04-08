@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,19 +94,21 @@ public class NeighbourFragment extends Fragment {
         initList();
     }
 
+    private static final String TAG = "NeighbourFragment";
+
     @Subscribe
     public void onDetailedNeighbour(DetailedNeighbourEvent event) {
         Intent i = new Intent(getContext(),DetailedProfile.class);
-        //i.putExtra("avatar", event.neighbour.getAvatarUrl()); impossible de récupérer l'avatar trouver autre méthode car image ≠ texte
         i.putExtra("avatar", event.neighbour.getAvatarUrl());
         i.putExtra("avatarName", event.neighbour.getName());
         i.putExtra("neighbourName", event.neighbour.getName());
         i.putExtra("address", event.neighbour.getAddress());
         i.putExtra("phoneNumber", event.neighbour.getPhoneNumber());
-        //facebook lacking
         i.putExtra("facebook", event.neighbour.getFacebook());
         i.putExtra("aboutText", event.neighbour.getAboutMe());
-
+        Log.d(TAG, "Afficher valeur avant: " + event.neighbour.getIsFavorite());
+        i.putExtra("favorite", event.neighbour.getIsFavorite());
+        Log.d(TAG, "Afficher valeur après: " + event.neighbour.getIsFavorite());
         startActivity(i);
 
     }

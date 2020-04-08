@@ -20,16 +20,13 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
         return neighbours;
     }
 
-    //Appel à la méthode getFavorites
-    private List<Neighbour> favorites = DummyNeighbourGenerator.generateFavorites();
-
     /**
      * {@inheritDoc}
      */
     @Override
     public List<Neighbour> getFavorites() {
-        return favorites;
-    }
+        return neighbours;
+    } //ok juste modifier avec booleen dans constructeur
 
     /**
      * {@inheritDoc}

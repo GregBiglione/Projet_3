@@ -26,9 +26,6 @@ public class ListNeighbourActivity extends AppCompatActivity {
     @BindView(R.id.container)
     ViewPager mViewPager;
 
-    //Référencement du bouton favorites
-    /*@BindView(R.id.tabItem2)
-    TabItem mFavorites;*/
 
     ListNeighbourPagerAdapter mPagerAdapter;
 
@@ -44,14 +41,6 @@ public class ListNeighbourActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        //Création de l'action au clic sur le bouton favorites
-        /*mFavorites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent favoritesPage = new Intent(ListNeighbourActivity.this, FavoriteFragment.class);
-                startActivity(favoritesPage);
-            }
-        });*/
 
     }
 
