@@ -94,11 +94,10 @@ public class NeighbourFragment extends Fragment {
         initList();
     }
 
-    private static final String TAG = "NeighbourFragment";
-
     @Subscribe
     public void onDetailedNeighbour(DetailedNeighbourEvent event) {
         Intent i = new Intent(getContext(),DetailedProfile.class);
+        i.putExtra("id", event.neighbour.getId());
         i.putExtra("avatar", event.neighbour.getAvatarUrl());
         i.putExtra("avatarName", event.neighbour.getName());
         i.putExtra("neighbourName", event.neighbour.getName());
@@ -106,9 +105,7 @@ public class NeighbourFragment extends Fragment {
         i.putExtra("phoneNumber", event.neighbour.getPhoneNumber());
         i.putExtra("facebook", event.neighbour.getFacebook());
         i.putExtra("aboutText", event.neighbour.getAboutMe());
-        Log.d(TAG, "Afficher valeur avant: " + event.neighbour.getIsFavorite());
         i.putExtra("favorite", event.neighbour.getIsFavorite());
-        Log.d(TAG, "Afficher valeur après: " + event.neighbour.getIsFavorite());
         startActivity(i);
 
     }

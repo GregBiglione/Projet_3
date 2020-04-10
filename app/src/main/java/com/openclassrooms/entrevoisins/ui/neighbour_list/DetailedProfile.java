@@ -11,25 +11,27 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.openclassrooms.entrevoisins.R;
-import com.openclassrooms.entrevoisins.model.Neighbour;
-import com.openclassrooms.entrevoisins.service.DummyNeighbourGenerator;
+import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
-import org.greenrobot.eventbus.Subscribe;
 
 public class DetailedProfile extends AppCompatActivity
 {
-    //référencement et déclaration du back button
+    //référencement et déclaration des back & star buttons
     private FloatingActionButton mBackButton;
     private FloatingActionButton mStarButton;
+    private  NeighbourApiService mApiService;
+    boolean isFavorite;
 
-    private static final String TAG = "DetailedProfile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_profile);
+
+        //id
+        long idAvatar = getIntent().getLongExtra("id",0);
 
         //avatar
         ImageView avatar = findViewById(R.id.item_list_avatar);
@@ -68,20 +70,13 @@ public class DetailedProfile extends AppCompatActivity
         about_text.setText(getIntent().getStringExtra("aboutText"));
 
         //isFavorite
-        //Boolean isFavorite = Boolean.valueOf(getIntent().getStringExtra("favorite"));
-        //Boolean isFavorite = getIntent().getExtras().getBoolean("favorite");
-        //Boolean isFavorite = getIntent().getExtras().getBoolean("favorite");
-        Boolean isFavorite = getIntent().getBooleanExtra("favorite", false);
+        isFavorite = getIntent().getBooleanExtra("favorite", false);
 
-        Log.d(TAG, "Valeur de isFavorite = " + isFavorite);
         //branchement du back button
         mBackButton = findViewById(R.id.back_arrow_button);
 
-        //test pour voir si l'étoile est jaune à true
-        if (isFavorite)
-        {
-            mStarButton.setImageResource(R.drawable.ic_star_white_24dp);
-        }
+        mApiService = DI.getNeighbourApiService();
+
 
         //Création de l'évènement au clic
         mBackButton.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +90,16 @@ public class DetailedProfile extends AppCompatActivity
         //branchement du favorite button
         mStarButton = findViewById(R.id.star_button);
 
+        //étoile par défaut sans clic en fonction de l'état cad favori ou non
+        if (!isFavorite)
+        {
+            mStarButton.setImageResource(R.drawable.ic_star_border_white_24dp);
+        }
+        else
+        {
+            mStarButton.setImageResource(R.drawable.ic_star_white_24dp);
+        }
+
         //Création de l'évènement au clic
         mStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,10 +109,15 @@ public class DetailedProfile extends AppCompatActivity
                 if (!isFavorite)
                 {
                     mStarButton.setImageResource(R.drawable.ic_star_white_24dp);
-                    //DummyNeighbourGenerator.DUMMY_NEIGHBOURS(isFavorite);
-
+                    mApiService.changeFavorite(idAvatar, true);
+                    isFavorite = true;
                 }
-
+                else
+                {
+                    mStarButton.setImageResource(R.drawable.ic_star_border_white_24dp);
+                    mApiService.changeFavorite(idAvatar, false);
+                    isFavorite = false;
+                }
                 //si nouveau clic passer l'étoile en blanc, retirer le neighbour des favoris et repasser le booleen à false
             }
         });
