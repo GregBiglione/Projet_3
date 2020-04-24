@@ -9,7 +9,6 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
 
     public ListNeighbourPagerAdapter(FragmentManager fm) {
         super(fm);
-        //possible modification pour ajouter les favoris
     }
 
     /**
@@ -29,8 +28,6 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
         }
     }
 
-    /*Les 2 pages retournent la liste de Neighbours voir comment retourner les favoris dans l'onglet favorites
-
     /**
      * get the number of pages
      * @return
@@ -38,5 +35,5 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return 2;
-    } //changer return 1 en return 2 (page my neighbours & favorites)
+    }
 }

@@ -30,8 +30,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/back_arrow_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/floatingButton_style"
         android:backgroundTint="@color/transparent"
         app:borderWidth="0dp"
         app:elevation="0dp"
@@ -42,8 +41,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/star_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/floatingButton_style"
         android:backgroundTint="@color/colorBackgroundStar"
         app:borderWidth="0dp"
         android:layout_marginEnd="16dp"
@@ -55,112 +53,61 @@
 
     <!-- Cardview infos -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/mainLinearLayout_style"
         app:layout_anchor="@+id/item_list_avatar"
-        app:layout_anchorGravity="bottom"
-        android:layout_gravity="bottom">
+        app:layout_anchorGravity="bottom">
 
         <android.support.v7.widget.CardView
             android:id="@+id/info_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/cardView_style"
             app:layout_anchor="@+id/star_button"
             app:layout_anchorGravity="bottom"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             app:cardCornerRadius="5dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical">
+                style="@style/cardViewMainLinearLayout_style">
 
                 <TextView
                     android:id="@+id/firstname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="5dp"
-                    android:textSize="28sp"
-                    android:textColor="#000"/>
+                    style="@style/texViewTitle_style"/>
 
                 <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/colorBackground"/>
+                    style="@style/horizontalLine_style"/>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="15dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="15dp">
+                    style="@style/itemLinearLayout_style">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="0dp"
-                        android:paddingEnd="10dp"
+                        style="@style/imageView_style"
                         app:srcCompat="@drawable/ic_place_pink_24dp" />
 
                     <TextView
                         android:id="@+id/address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"/>
+                        style="@style/itemTextView_style"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="15dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="15dp">
+                    style="@style/itemLinearLayout_style">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="0dp"
-                        android:paddingEnd="10dp"
+                        style="@style/imageView_style"
                         app:srcCompat="@drawable/ic_phone_pink_24dp" />
 
                     <TextView
                         android:id="@+id/phoneNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp" />
+                       style="@style/itemTextView_style"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="15dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="15dp">
+                    style="@style/itemLinearLayout_style">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="0dp"
-                        android:paddingEnd="10dp"
+                        style="@style/imageView_style"
                         app:srcCompat="@drawable/ic_facebook_pink_24dp" />
 
                     <TextView
                         android:id="@+id/facebook"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp" />
+                        style="@style/itemTextView_style"/>
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -171,51 +118,28 @@
 
     <!-- Cardview à propos -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/mainLinearLayout_style"
         app:layout_anchor="@+id/info_container"
-        app:layout_anchorGravity="bottom"
-        android:layout_gravity="bottom">
+        app:layout_anchorGravity="bottom">
 
         <android.support.v7.widget.CardView
             android:id="@+id/about_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp">
+            style="@style/cardView_style">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical">
+                style="@style/cardViewMainLinearLayout_style">
 
 
                 <TextView
                     android:id="@+id/about_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="5dp"
-                    android:textSize="28sp"
-                    android:textColor="#000"/>
+                    style="@style/texViewTitle_style"/>
 
                 <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/colorBackground"/>
+                    style="@style/horizontalLine_style"/>
 
                 <TextView
                     android:id="@+id/about_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:layout_marginBottom="15dp"
-                    android:textSize="14sp" />
+                    style="@style/texViewParagraph_style"/>
 
             </LinearLayout>
 

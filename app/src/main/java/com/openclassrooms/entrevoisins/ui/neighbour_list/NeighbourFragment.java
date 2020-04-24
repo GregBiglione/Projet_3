@@ -107,6 +107,5 @@ public class NeighbourFragment extends Fragment {
         i.putExtra("aboutText", event.neighbour.getAboutMe());
         i.putExtra("favorite", event.neighbour.getIsFavorite());
         startActivity(i);
-
     }
 }

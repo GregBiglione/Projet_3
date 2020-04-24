@@ -116,11 +116,3 @@ public class Neighbour {
         return Objects.hash(id);
     }
 }
-
-// /** Facebook */ lg24
-//    //private String facebook;
-//String facebook, lg38
-//this.facebook = facebook; lg44
-//public String getFacebook() { return  facebook; } lg84
-//
-//    public void setFacebook(String facebook) { this.facebook = facebook + name; }

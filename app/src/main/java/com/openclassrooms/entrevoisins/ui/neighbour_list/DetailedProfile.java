@@ -20,7 +20,7 @@ public class DetailedProfile extends AppCompatActivity
     //référencement et déclaration des back & star buttons
     private FloatingActionButton mBackButton;
     private FloatingActionButton mStarButton;
-    private  NeighbourApiService mApiService;
+    private NeighbourApiService mApiService;
     boolean isFavorite;
 
 
@@ -118,7 +118,6 @@ public class DetailedProfile extends AppCompatActivity
                     mApiService.changeFavorite(idAvatar, false);
                     isFavorite = false;
                 }
-                //si nouveau clic passer l'étoile en blanc, retirer le neighbour des favoris et repasser le booleen à false
             }
         });
 
