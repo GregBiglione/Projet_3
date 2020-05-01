@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.openclassrooms.entrevoisins.DetailedProfile;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
@@ -96,10 +97,9 @@ public class NeighbourFragment extends Fragment {
 
     @Subscribe
     public void onDetailedNeighbour(DetailedNeighbourEvent event) {
-        Intent i = new Intent(getContext(),DetailedProfile.class);
+        Intent i = new Intent(getContext(), DetailedProfile.class);
         i.putExtra("id", event.neighbour.getId());
         i.putExtra("avatar", event.neighbour.getAvatarUrl());
-        i.putExtra("avatarName", event.neighbour.getName());
         i.putExtra("neighbourName", event.neighbour.getName());
         i.putExtra("address", event.neighbour.getAddress());
         i.putExtra("phoneNumber", event.neighbour.getPhoneNumber());

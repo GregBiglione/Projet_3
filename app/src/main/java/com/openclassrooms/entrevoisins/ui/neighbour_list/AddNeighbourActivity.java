@@ -101,7 +101,7 @@ public class AddNeighbourActivity extends AppCompatActivity {
      * @return String
      */
     String randomImage() {
-        return "https://i.pravatar.cc/150?u="+ System.currentTimeMillis();
+        return "https://i.pravatar.cc/600?u="+ System.currentTimeMillis();
     }
 
     /**

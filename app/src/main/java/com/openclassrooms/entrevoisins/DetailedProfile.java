@@ -1,34 +1,33 @@
-package com.openclassrooms.entrevoisins.ui.neighbour_list;
+package com.openclassrooms.entrevoisins;
 
-import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
-
 public class DetailedProfile extends AppCompatActivity
 {
-    //référencement et déclaration des back & star buttons
-    private FloatingActionButton mBackButton;
+    //référencement et déclaration de l'Api & star button
     private FloatingActionButton mStarButton;
     private NeighbourApiService mApiService;
     boolean isFavorite;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_profile);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //id
         long idAvatar = getIntent().getLongExtra("id",0);
@@ -40,14 +39,12 @@ public class DetailedProfile extends AppCompatActivity
                 .load(avatarImage)
                 .into(avatar);
 
-        //avatar neighbour name
-        TextView avatarName = findViewById(R.id.avatar_name);
-        avatarName.setText(getIntent().getStringExtra("avatarName"));
-
         //neighbour name
-        TextView firstName = findViewById(R.id.firstname);
+        TextView firstName = findViewById(R.id.firstName);
         String name = getIntent().getStringExtra("neighbourName");
         firstName.setText(name);
+
+        getSupportActionBar().setTitle(name);
 
         //neighbour address
         TextView address = findViewById(R.id.address);
@@ -72,23 +69,11 @@ public class DetailedProfile extends AppCompatActivity
         //isFavorite
         isFavorite = getIntent().getBooleanExtra("favorite", false);
 
-        //branchement du back button
-        mBackButton = findViewById(R.id.back_arrow_button);
-
         mApiService = DI.getNeighbourApiService();
-
-
-        //Création de l'évènement au clic
-        mBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent backHomePage = new Intent(DetailedProfile.this, ListNeighbourActivity.class);
-                startActivity(backHomePage);
-            }
-        });
 
         //branchement du favorite button
         mStarButton = findViewById(R.id.star_button);
+
 
         //étoile par défaut sans clic en fonction de l'état cad favori ou non
         if (!isFavorite)
@@ -100,7 +85,6 @@ public class DetailedProfile extends AppCompatActivity
             mStarButton.setImageResource(R.drawable.ic_star_white_24dp);
         }
 
-        //Création de l'évènement au clic
         mStarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -111,16 +95,18 @@ public class DetailedProfile extends AppCompatActivity
                     mStarButton.setImageResource(R.drawable.ic_star_white_24dp);
                     mApiService.changeFavorite(idAvatar, true);
                     isFavorite = true;
+                    Snackbar.make(view, name + " a éte ajouté(e) aux favoris", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                 }
                 else
                 {
                     mStarButton.setImageResource(R.drawable.ic_star_border_white_24dp);
                     mApiService.changeFavorite(idAvatar, false);
                     isFavorite = false;
+                    Snackbar.make(view, name + " a éte supprimé(e) des favoris", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                 }
             }
         });
-
-
     }
 }
